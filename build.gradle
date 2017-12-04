@@ -8,16 +8,17 @@ buildscript {
 
   dependencies {
       classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+      classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.2'
   }
 }
 
 apply plugin: 'kotlin'
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = '1.8'
 }
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = '1.8'
 }
 
 repositories {
@@ -27,5 +28,15 @@ repositories {
 
 dependencies {
   compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+  compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.20'
+  compile 'org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:0.20'
+  testCompile 'org.junit.jupiter:junit-jupiter-api:5.0.2'
+  testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.0.2'
+  testCompile 'io.kotlintest:kotlintest:2.0.7'
 }
 
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
